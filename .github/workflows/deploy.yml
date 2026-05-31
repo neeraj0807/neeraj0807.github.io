@@ -27,7 +27,12 @@ jobs:
         run: npm ci
 
       - name: Build site and generate static output
-        run: npm run build
+        run: |
+          repoName="${GITHUB_REPOSITORY##*/}"
+          if [[ "$repoName" != "${GITHUB_REPOSITORY_OWNER}.github.io" ]]; then
+            echo "NEXT_PUBLIC_BASE_PATH=/$repoName" >> $GITHUB_ENV
+          fi
+          npm run build
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v1

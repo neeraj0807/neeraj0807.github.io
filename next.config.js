@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
-const isGithubActions = process.env.GITHUB_ACTIONS === 'true';
 const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1] || '';
+const explicitBasePath = process.env.NEXT_PUBLIC_BASE_PATH || process.env.BASE_PATH || '';
 const isGithubUserPage = repoName && repoName.endsWith('.github.io');
-const basePath = isGithubActions && repoName && !isGithubUserPage ? `/${repoName}` : '';
+const basePath = explicitBasePath || (repoName && !isGithubUserPage ? `/${repoName}` : '');
 
 const nextConfig = {
   reactStrictMode: true,
