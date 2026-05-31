@@ -28,9 +28,10 @@ jobs:
 
       - name: Build site and generate static output
         run: |
+          set -e
           repoName="${GITHUB_REPOSITORY##*/}"
-          if [[ "$repoName" != "${GITHUB_REPOSITORY_OWNER}.github.io" ]]; then
-            echo "NEXT_PUBLIC_BASE_PATH=/$repoName" >> $GITHUB_ENV
+          if [[ "$repoName" != *.github.io ]]; then
+            echo "NEXT_PUBLIC_BASE_PATH=/$repoName" >> "$GITHUB_ENV"
           fi
           npm run build
 
