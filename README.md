@@ -101,7 +101,9 @@ The portfolio can be deployed to various platforms:
 
 - **Vercel** (Recommended): Push to GitHub and connect to Vercel
 - **Netlify**: Deploy from Git or use CLI
-- **GitHub Pages**: Use `next export` and GitHub Actions
+- **GitHub Pages**: Use GitHub Actions
+
+To publish at the root URL `https://neeraj0807.github.io/`, rename the repository to `neeraj0807.github.io` in GitHub settings.
 
 ## License
 
